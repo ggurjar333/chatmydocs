@@ -34,6 +34,11 @@ If you have any feedback, please reach out to us at ggurjar333@gmail.com
 I'm a data engineer...
 
 
+## 🛠 Skills
+Python, Bash, Business Talks...
+
+
+
 ## 🔗 Links
 https://www.linkedin.com/in/ggurjarsocl/
 
