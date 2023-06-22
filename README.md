@@ -2,7 +2,10 @@
 # chatmydocs - OPENAI
 A streamlit application analyze your documents using llama-index and OpenAI API.
 
-It helps with your custom knowledge base. Please fork the repo if you want to use. Hence I can also see new features if you build any on top of this.
+It helps with your custom knowledge base.
+
+# Note
+Please fork the repo if you want to use. Hence I can also see new features if you build any on top of this.
 
 ## Environment Variables
 
