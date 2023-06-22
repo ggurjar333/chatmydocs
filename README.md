@@ -21,6 +21,6 @@ Please create a virtual environment, activate it and follow the steps given.
 
 ```python
   pip install openai llama-index streamlit boto3
-  cd my-project
+  cd chatmydocs
 ```
     
