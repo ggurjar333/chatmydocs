@@ -20,12 +20,11 @@ AWS_S3BUCKET=xxxxxxxxxx
 Please create a virtual environment, activate it and follow the steps given.
 
 ```python
-  pip install openai llama-index streamlit boto3
   cd chatmydocs
 ```
     
 
-## Demo
+### Demo
 
 ```bash
 ./run.sh
