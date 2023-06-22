@@ -31,7 +31,7 @@ If you have any feedback, please reach out to me at ggurjar333@gmail.com
 
 
 ## 🚀 About Me
-I'm a data engineer...
+I'm a data engineer... I'm currently looking for a job.
 
 
 ## 🛠 Skills
