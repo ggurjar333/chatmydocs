@@ -20,7 +20,7 @@ AWS_S3BUCKET=xxxxxxxxxx
 Install my-project with npm
 
 ```python
-  pip install ope
+  pip install openai llama-index streamlit boto3
   cd my-project
 ```
     
