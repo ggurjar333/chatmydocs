@@ -19,11 +19,10 @@ uploaded_files = st.file_uploader("Choose a word/pdf file")
 
 if uploaded_files is not None:
   st.write("Filename:", uploaded_files.name)
-  uploadToS3(file=uploaded_files, bucket='chatmydocs-ai', s3_file=uploaded_files)
-  bucket = 'chatmydocs-ai'
+  uploadToS3(file=uploaded_files, bucket=os.environ['AWS_S3BUCKET'], s3_file=uploaded_files)
   obj = boto3.client("s3")
   obj.download_file(Filename="data/" + uploaded_files.name,
-                    Bucket="chatmydocs-ai",
+                    Bucket=os.environ['AWS_S3BUCKET'],
                     Key=uploaded_files.name)
 
   title = st.text_area('What do you curious about?')
