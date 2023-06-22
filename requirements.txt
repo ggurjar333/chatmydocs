@@ -1,0 +1,4 @@
+wheel
+streamlit
+llama-index
+boto3
