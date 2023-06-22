@@ -18,7 +18,7 @@ uploaded_files = st.file_uploader("Choose a word/pdf file")
 
 if uploaded_files is not None:
   st.write("Filename:", uploaded_files.name)
-  uploadToS3(file=uploaded_files, bucket=os.environ['AWS_S3BUCKET'], s3_file=uploaded_files)
+  uploadToS3(file=uploaded_files, bucket=str(os.environ['AWS_S3BUCKET']), s3_file=uploaded_files)
   obj = boto3.client("s3")
   obj.download_file(Filename="data/" + uploaded_files.name,
                     Bucket=os.environ['AWS_S3BUCKET'],
