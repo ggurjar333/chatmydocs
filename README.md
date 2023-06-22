@@ -17,7 +17,7 @@ AWS_S3BUCKET=xxxxxxxxxx
 
 ## Installation
 
-Install my-project with npm
+Please create a virtual environment, activate it and follow the steps given.
 
 ```python
   pip install openai llama-index streamlit boto3
