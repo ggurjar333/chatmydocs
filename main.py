@@ -4,14 +4,13 @@ import time
 from helpers import uploadToS3
 from llama_index import VectorStoreIndex, SimpleDirectoryReader
 import boto3
-import s3fs
 import pathlib
 
 p = pathlib.Path("data/")
 p.mkdir(parents=True, exist_ok=True)
 st.title('chatmydocs AI')
 OPENAI_API_KEY = os.environ['OPENAI_API_KEY']
-s3 = s3fs.S3FileSystem(key=os.environ['AWS_ACCESS_KEY_ID'], secret=os.environ['AWS_SECRET_ACCESS_KEY'])
+
 
 c1, c2 = st.columns(2)
 c1.subheader('Upload word/pdf File')
