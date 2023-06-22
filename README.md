@@ -1,5 +1,5 @@
 
-# ChatMyDocs - OPENAI
+# chatmydocs - OPENAI
 A streamlit application analyze your documents using llama-index and OpenAI API.
 
 It helps with your custom knowledge base.
