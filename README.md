@@ -27,7 +27,7 @@ Please create a virtual environment, activate it and follow the steps given.
 
 ## Demo
 
-```python
-streamlit run main.py
+```bash
+./run.sh
 ```
 
