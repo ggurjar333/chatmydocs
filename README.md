@@ -24,3 +24,10 @@ Please create a virtual environment, activate it and follow the steps given.
   cd chatmydocs
 ```
     
+
+## Demo
+
+```python
+streamlit run main.py
+```
+
