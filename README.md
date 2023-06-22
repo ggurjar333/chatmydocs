@@ -15,18 +15,9 @@ AWS_S3BUCKET=xxxxxxxxxx
 ```
 
 
-## Installation
-
-Please create a virtual environment, activate it and follow the steps given.
+## Installation and Run
 
 ```python
   cd chatmydocs
+  ./run.sh
 ```
-    
-
-### Demo
-
-```bash
-./run.sh
-```
-
