@@ -1,7 +1,5 @@
-import pathlib
-from llama_index import SimpleDirectoryReader, VectorStoreIndex
+from llama_index import SimpleDirectoryReader, VectorStoreIndex, Prompt
 from utilities import Utility
-
 
 class PdfWord:
     def __init__(self):
@@ -9,12 +7,12 @@ class PdfWord:
         self._prompt = ""
 
     def analyze(self, temp_dir, user_prompt_text):
-        self._folder_name = temp_dir
+        self._folder_name = temp_dir + '/'
         self._prompt = user_prompt_text
 
-        # Create a temp directory
-        ut = Utility()
-        ut.create_tmp_folder(folder_name=self._folder_name)
+        # # Create a temp directory
+        # ut = Utility()
+        # ut.create_tmp_folder(folder_name=self._folder_name)
 
         documents = SimpleDirectoryReader(self._folder_name).load_data()
         index = VectorStoreIndex.from_documents(documents)

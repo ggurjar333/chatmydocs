@@ -1,7 +1,7 @@
 import boto3
 import os
 from dotenv import load_dotenv
-from helpers.utilities import Utility
+from utilities import Utility
 load_dotenv()
 
 bucket = os.environ.get('AWS_S3BUCKET')
@@ -12,24 +12,25 @@ obj = boto3.client('s3',
 
 class S3helpers:
     def __init__(self):
-        self._folder_name = ""
+        self._temp_folder = ""
         self._filename = ""
-        self._loc_path = ""
 
     def upload(self, file_obj):
         self._filename = file_obj.name
         obj.upload_fileobj(file_obj, bucket, file_obj.name)
 
-    def download(self, file_obj, temp_dir):
+    def download(self, file_obj, temp_folder):
         self._filename = file_obj.name
-        self._folder_name = temp_dir
-        self._loc_path = temp_dir + '/' + file_obj.name
+        self._temp_folder = temp_folder + '/'
+        file_path = self._temp_folder + self._filename
 
-        temp_dir = Utility()
-        temp_dir.create_tmp_folder(self._folder_name)
-        obj.download_file(Filename=self._loc_path,
+        # Create a temp directory
+        ut = Utility()
+        ut.create_tmp_folder(folder_name=self._temp_folder)
+
+        obj.download_file(Filename= file_path,
                           Bucket=bucket,
                           Key=file_obj.name)
 
     def __str__(self) -> str:
-        return f'This {self._filename} was temporarily downloaded at {self._loc_path}. and then deleted successfully.'
+        return str(f'{self._filename} is on s3.')
