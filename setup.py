@@ -1,53 +1,52 @@
 from dotenv import load_dotenv
 import streamlit as st
 import os
-import time
-from s3helpers import S3helpers
-from llama_index import VectorStoreIndex, SimpleDirectoryReader, download_loader
+from helpers.s3helpers import S3helpers
 import boto3
-import pathlib
 import openai
-from website import Website
-from pdfword import PdfWord
+from sources.website import Website
+from sources.pdfword import PdfWord
+from cloud_providers.aws import AWS
 
 load_dotenv()
-
-openai.api_key = os.environ.get('OPENAI_API_KEY')
-obj = boto3.client('s3',
-                   aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
-                   aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY']
-                   )
-
-# p = pathlib.Path("tmp/")
-# p.mkdir(parents=True, exist_ok=True)
-
-st.title('Resume AI')
-
+title = st.title('Resume AI')
 c1, c2 = st.columns(2)
-# c1.subheader('Upload word/pdf File')
+
+# Set up cloud and openai key using UI
+# c1, c2, c3 = st.columns(3)
+# with c3:
+#     open_ai_key = st.text_input("OpenAI API Key")
+#     cloud_box = st.selectbox('Select cloud service provider', ('AWS', 'GCP', 'Azure'))
+#     if cloud_box == 'AWS':
+#         access_key = st.text_input('AWS Access Key ID')
+#         secret_key = st.text_input('AWS Secret Access Key')
+#         sbutton = st.button('Save')
+#         if sbutton:
+#             openai.api_key = open_ai_key
+#             cloud = AWS()
+#             obj = cloud.setup(access_key=access_key, secret_key=secret_key)
+
 with c1:
-    option = st.selectbox('Select Data Source', ('PDF/Word', 'LinkedIn', 'GitHub'))
+    option = st.selectbox('Select Data Source', ('PDF/Word', 'Website', 'GitHub'))
 
     if option == 'PDF/Word':
         uploaded_files = st.file_uploader("Choose a PDF/Word file")
         if uploaded_files is not None:
             # Uploading the input file to S3 Bucket
-            # try:
             storage = S3helpers()
             storage.upload(file_obj=uploaded_files)
             # st.write('File Uploaded to S3.')
-            # Downloading the file from S3 to temporary system storage
-            storage.download(file_obj=uploaded_files, temp_dir='tmp')
+            storage.download(file_obj=uploaded_files, temp_folder='tmp')
             # PDF/Word Prompt Box
             query = st.text_area('Enter your prompt query')
-            st.write(query)
+            # st.write(query)
             # Parsing and analyzing PDF/Word
             analyze_profile = st.button('Analyze')
 
             if analyze_profile:
                 with st.spinner('Analyzing ...'):
                     pw = PdfWord()
-                    result = pw.analyze(user_prompt_text=query, temp_dir='tmp')
+                    result = pw.analyze(temp_dir='tmp', user_prompt_text=query)
                 if result:
                     with c2:
                         st.write(result)

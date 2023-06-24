@@ -4,3 +4,4 @@ llama-index
 boto3
 python-dotenv
 bs4
+pypdf
