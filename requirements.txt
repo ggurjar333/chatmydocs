@@ -2,3 +2,5 @@ wheel
 streamlit
 llama-index
 boto3
+python-dotenv
+bs4
