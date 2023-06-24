@@ -25,7 +25,7 @@ To run this project, you will need to create .env file and the following environ
 
 ```python
   cd chatmydocs
-  ./run.sh
+  ./setup.sh
 ```
 
 ## Feedback
