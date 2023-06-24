@@ -9,7 +9,7 @@ Please fork the repo if you want to use. Hence I can also see new features if yo
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file. Use your own credentials to make it work.
+To run this project, you will need to create .env file and the following environment variables to your .env file. Use your own credentials to make it work.
 
 `OPENAI_API_KEY=xxxxxxxxxxxxx`
 
