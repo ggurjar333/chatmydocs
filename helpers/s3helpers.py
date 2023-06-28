@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from utilities import Utility
 load_dotenv()
 
-bucket = os.environ.get('AWS_S3BUCKET')
+bucket = os.environ.get('AWS_S3BUCKET_RAW')
 obj = boto3.client('s3',
                    aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
                    aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'])

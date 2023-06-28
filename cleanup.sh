@@ -1,3 +1,3 @@
 #!/bin/sh
 rm --r __pycache__/
-rm -rf tmp/*
+rm --r tmp/*
