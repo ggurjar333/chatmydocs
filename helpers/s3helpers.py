@@ -1,7 +1,7 @@
 import boto3
 import os
 from dotenv import load_dotenv
-from utilities import Utility
+from helpers.utilities import Utility
 load_dotenv()
 
 bucket = os.environ.get('AWS_S3BUCKET_RAW')
@@ -27,6 +27,7 @@ class S3helpers:
         # Create a temp directory
         ut = Utility()
         ut.create_tmp_folder(folder_name=self._temp_folder)
+        print(ut.__str__())
 
         obj.download_file(Filename= file_path,
                           Bucket=bucket,

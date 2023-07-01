@@ -49,7 +49,7 @@ with c1:
             storage.download(file_obj=uploaded_files, temp_folder='tmp')
             documents = SimpleDirectoryReader('tmp/').load_data()
             index = VectorStoreIndex.from_documents(documents)
-            chat_engine = index.as_chat_engine(chat_mode='react', verbose=True)
+            chat_engine = index.as_chat_engine()
             # query_engine = index.as_query_engine()
             ###################################################################
             if "messages" not in st.session_state:
@@ -66,6 +66,7 @@ with c1:
 
             for idx, msg in enumerate(st.session_state.messages):
                 message(msg["content"], is_user=msg["role"] == "user", key=idx)
+                # message(msg["content"], is_user=msg["role"], key=idx)
 
             if user_input and not os.environ['OPENAI_API_KEY']:
                 st.info("Please add your OpenAI API key to continue.")
@@ -73,15 +74,14 @@ with c1:
             pw = PdfWord()
             if user_input and os.environ['OPENAI_API_KEY']:
                 openai.api_key = os.environ['OPENAI_API_KEY']
-                st.session_state.messages.append({"role": "assistant", "content": user_input})
-                message(user_input)
+                st.session_state.messages.append({"role": "user", "content": user_input})
+                message(user_input, is_user=False)
                 # response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
 
-                # response = pw.analyze(temp_dir='tmp', user_prompt_text=user_input)
-                response = chat_engine.chat(message=user_input)
-                print(response)
-                # print(type(response))
+                response = pw.analyze(temp_dir='tmp', user_prompt_text=user_input)
+                # response = chat_engine.chat(message=user_input)
                 st.session_state.messages.append({"role": "user", "content": response})
+                # print(response)
                 message(response)
             ###################################################################
             # PDF/Word Prompt Box
