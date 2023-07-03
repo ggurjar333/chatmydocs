@@ -6,3 +6,4 @@ cloud_providers/__pycache__/
 helpers/__pycache__/
 sources/__pycache__/
 tmp/
+venv/
