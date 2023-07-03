@@ -75,14 +75,14 @@ with c1:
             if user_input and os.environ['OPENAI_API_KEY']:
                 openai.api_key = os.environ['OPENAI_API_KEY']
                 st.session_state.messages.append({"role": "user", "content": user_input})
-                message(user_input, is_user=False)
+                message(user_input, is_user=True)
                 # response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
 
                 response = pw.analyze(temp_dir='tmp', user_prompt_text=user_input)
                 # response = chat_engine.chat(message=user_input)
-                st.session_state.messages.append({"role": "user", "content": response})
+                st.session_state.messages.append({"role": "assistant", "content": response})
                 # print(response)
-                message(response)
+                message(response, is_user=False)
             ###################################################################
             # PDF/Word Prompt Box
             # query = st.text_area('Enter your prompt query')
