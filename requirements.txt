@@ -5,3 +5,5 @@ boto3
 python-dotenv
 bs4
 pypdf
+streamlit-chat
+weaviate-client

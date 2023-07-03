@@ -2,11 +2,11 @@ from dotenv import load_dotenv
 import streamlit as st
 import os
 from helpers.s3helpers import S3helpers
+from helpers.utilities import Utility
 import boto3
 import openai
 from sources.website import Website
 from sources.pdfword import PdfWord
-from cloud_providers.aws import AWS
 from streamlit_chat import message
 from llama_index import SimpleDirectoryReader, VectorStoreIndex
 
@@ -48,6 +48,7 @@ with c1:
             # st.write('File Uploaded to S3.')
             storage.download(file_obj=uploaded_files, temp_folder='tmp')
             documents = SimpleDirectoryReader('tmp/').load_data()
+
             index = VectorStoreIndex.from_documents(documents)
             chat_engine = index.as_chat_engine()
             # query_engine = index.as_query_engine()
@@ -76,13 +77,14 @@ with c1:
                 openai.api_key = os.environ['OPENAI_API_KEY']
                 st.session_state.messages.append({"role": "user", "content": user_input})
                 message(user_input, is_user=True)
-                # response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
-
                 response = pw.analyze(temp_dir='tmp', user_prompt_text=user_input)
-                # response = chat_engine.chat(message=user_input)
                 st.session_state.messages.append({"role": "assistant", "content": response})
-                # print(response)
                 message(response, is_user=False)
+
+            # Deleting the temporary files and folders created. # CODE Under PROGRESS
+            ut = Utility()
+            ut.delete_tmp_folder(folder_name='tmp', file_name=uploaded_files.name)
+
             ###################################################################
             # PDF/Word Prompt Box
             # query = st.text_area('Enter your prompt query')

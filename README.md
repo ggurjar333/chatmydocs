@@ -1,5 +1,5 @@
 
-# chatmydocs - OpenAI with LLama-Index Integration
+# ChatMyDocs - OpenAI with LLama-Index Integration
 A streamlit application analyze your documents using llama-index and OpenAI API.
 
 It helps with your custom knowledge base.
