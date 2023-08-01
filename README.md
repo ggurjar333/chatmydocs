@@ -36,7 +36,7 @@ To run this project, you will need to create .env file and the following environ
 If you have any feedback, please reach out to me at ggurjar333@gmail.com
 
 ## 🚀 About Me
-I'm a data engineer based in Dubai. I'm currently looking for a job.
+I'm a data engineer based in Ahmedabad, India. I'm currently looking for a job.
 
 ## 🛠 Skills
 Python, Bash...
