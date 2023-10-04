@@ -1,10 +1,9 @@
-.venv/
 *.env
 .idea/
-__pycache__/
-cloud_providers/__pycache__/
-helpers/__pycache__/
-sources/__pycache__/
-tmp/
-backend/.venv/
-frontend/node_modules/
+/backend/__pycache__/
+/backend/cloud_providers/__pycache__/
+/backend/helpers/__pycache__/
+/backend/sources/__pycache__/
+/backend/tmp/
+/backend/venv/
+/frontend/node_modules/
