@@ -6,4 +6,5 @@ cloud_providers/__pycache__/
 helpers/__pycache__/
 sources/__pycache__/
 tmp/
-venv/
+backend/.venv/
+frontend/node_modules/
