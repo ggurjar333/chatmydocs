@@ -1,10 +1,10 @@
 // store.ts
 
-import { legacy_createStore } from 'redux';
+import { createStore } from 'redux';
 import rootReducer from '../reducers/rootReducer'; // Import your rootReducer
 
 
-const store = legacy_createStore(rootReducer);
+const store = createStore(rootReducer);
 
 export default store;
 
