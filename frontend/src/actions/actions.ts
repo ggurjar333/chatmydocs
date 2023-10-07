@@ -1,28 +1,20 @@
 // actions.ts
 
-// import { ActionType } from './store';
+// Define action types as string literals
+export enum ActionType {
+  INCREMENT = 'INCREMENT',
+  DECREMENT = 'DECREMENT',
+}
 
-// Define action creators
-// actions.ts
-
-export const increment = () => {
+// Define action creators with TypeScript annotations
+export const increment = (): { type: ActionType.INCREMENT } => {
   return {
-    type: 'INCREMENT',
+    type: ActionType.INCREMENT,
   };
 };
 
-export const decrement = () => {
+export const decrement = (): { type: ActionType.DECREMENT } => {
   return {
-    type: 'DECREMENT',
+    type: ActionType.DECREMENT,
   };
 };
-
-
-
-// export interface IncrementAction {
-//   type: ActionType.INCREMENT;
-// }
-
-// export interface DecrementAction {
-//   type: ActionType.DECREMENT;
-// }
