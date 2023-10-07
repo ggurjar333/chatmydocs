@@ -19,10 +19,10 @@ export const decrement = () => {
 
 
 
-export interface IncrementAction {
-  type: ActionType.INCREMENT;
-}
+// export interface IncrementAction {
+//   type: ActionType.INCREMENT;
+// }
 
-export interface DecrementAction {
-  type: ActionType.DECREMENT;
-}
+// export interface DecrementAction {
+//   type: ActionType.DECREMENT;
+// }
